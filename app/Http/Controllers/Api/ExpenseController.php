@@ -48,7 +48,13 @@ class ExpenseController extends Controller
         $data->save();
         return response([
             'status' => true,
-            'message' => 'Data berhasil ditambahkan'
+            'message' => 'Data berhasil ditambahkan',
+            'data' => [
+                'toko' => $data->toko,
+                'total' => $data->total,
+                'item' => $data->item,
+                'tanggal_struk' => $data->tanggal_struk,
+            ],
         ]);
     }
 
