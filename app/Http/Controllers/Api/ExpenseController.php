@@ -14,7 +14,22 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        // $data = ExpenseRecord::all();
+        // return response()->json([
+        //     'status' => true,
+        //     'message' => 'Data ditemukan',
+        //     'data' => $data
+        // ], 200);
+    }
+
+    public function allRecords()
+    {
+        $data = ExpenseRecord::all();
+        return response()->json([
+            'status' => true,
+            'message' => 'Data ditemukan',
+            'data' => $data
+        ], 200);
     }
 
     /**

@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('catat', [ExpenseController::class, 'store']);
+Route::get('laporan', [ExpenseController::class, 'allRecords']);
