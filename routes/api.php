@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 
 Route::post('catat', [ExpenseController::class, 'store']);
 Route::get('laporan', [ExpenseController::class, 'allRecords']);
+Route::get('laporanHarian', [ExpenseController::class, 'todayRecords']);
+Route::get('laporanBulanan', [ExpenseController::class, 'monthRecords']);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ExpenseRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
@@ -25,6 +26,27 @@ class ExpenseController extends Controller
     public function allRecords()
     {
         $data = ExpenseRecord::all();
+        return response()->json([
+            'status' => true,
+            'message' => 'Data ditemukan',
+            'data' => $data
+        ], 200);
+    }
+
+    public function todayRecords() {
+        $current_date = date('Y-m-d');
+
+        $data = ExpenseRecord::whereDate('tanggal_struk', $current_date)->get();
+        return response()->json([
+            'status' => true,
+            'message' => 'Data ditemukan',
+            'data' => $data
+        ], 200);
+    }
+
+    public function monthRecords()
+    {
+        $data = ExpenseRecord::whereMonth('tanggal_struk', Carbon::now()->month)->get();
         return response()->json([
             'status' => true,
             'message' => 'Data ditemukan',
